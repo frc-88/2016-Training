@@ -22,22 +22,22 @@ public class Drive extends Subsystem {
 	
 	public Drive() {
 		lTalonMaster = new CANTalon(RobotMap.leftMotorController);
-		lTalonMaster.changeControlMode(CANTalon.ControlMode.Speed);
+		lTalonMaster.changeControlMode(CANTalon.TalonControlMode.Speed);
 		lTalonMaster.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		lTalonMaster.setPID(P, I, D);
 
 		rTalonMaster = new CANTalon(RobotMap.rightMotorController);
-		rTalonMaster.changeControlMode(CANTalon.ControlMode.Speed);
+		rTalonMaster.changeControlMode(CANTalon.TalonControlMode.Speed);
 		rTalonMaster.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		rTalonMaster.setPID(P, I, D);
 
 		// set up drive slaves
 		lTalonSlave = new CANTalon(RobotMap.leftMotorController2);
-		lTalonSlave.changeControlMode(CANTalon.ControlMode.Follower);
+		lTalonSlave.changeControlMode(CANTalon.TalonControlMode.Follower);
 		lTalonSlave.set(lTalonMaster.getDeviceID());
 
 		rTalonSlave = new CANTalon(RobotMap.rightMotorController2);
-		rTalonSlave.changeControlMode(CANTalon.ControlMode.Follower);
+		rTalonSlave.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rTalonSlave.set(rTalonMaster.getDeviceID());
 
 	}
