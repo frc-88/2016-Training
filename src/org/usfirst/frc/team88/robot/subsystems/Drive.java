@@ -40,6 +40,9 @@ public class Drive extends Subsystem {
 	}
 	
 	public void move (double left, double right){
+		SmartDashboard.putNumber("Left Input: ", left);
+		SmartDashboard.putNumber("Right Input: ", right);
+				
 		lTalonMaster.set(left);
 		rTalonMaster.set(right);
 
