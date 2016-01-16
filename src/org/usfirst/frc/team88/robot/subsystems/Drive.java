@@ -11,41 +11,38 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Drive extends Subsystem {
-	private final CANTalon lTalonMaster, lTalonSlave, rTalonMaster, rTalonSlave;
+	private final CANTalon lTalonMaster, lTalonSlave1, lTalonSlave2, rTalonMaster, rTalonSlave1, rTalonSlave2;
 
-	// PID constants
-	private final static double P = 1.0;
-	private final static double I = 0.002;
-	private final static double D = 0.0;
-	
-	private final static double MAX_SPEED = 35.0;
-	
 	public Drive() {
-		lTalonMaster = new CANTalon(RobotMap.leftMotorController);
-		lTalonMaster.changeControlMode(CANTalon.ControlMode.Speed);
-		lTalonMaster.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		lTalonMaster.setPID(P, I, D);
+		lTalonMaster = new CANTalon(RobotMap.leftMotorController1);
+		lTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
-		rTalonMaster = new CANTalon(RobotMap.rightMotorController);
-		rTalonMaster.changeControlMode(CANTalon.ControlMode.Speed);
-		rTalonMaster.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		rTalonMaster.setPID(P, I, D);
+		rTalonMaster = new CANTalon(RobotMap.rightMotorController1);
+		rTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
 		// set up drive slaves
-		lTalonSlave = new CANTalon(RobotMap.leftMotorController2);
-		lTalonSlave.changeControlMode(CANTalon.ControlMode.Follower);
-		lTalonSlave.set(lTalonMaster.getDeviceID());
+		lTalonSlave1 = new CANTalon(RobotMap.leftMotorController2);
+		lTalonSlave1.changeControlMode(CANTalon.TalonControlMode.Follower);
+		lTalonSlave1.set(lTalonMaster.getDeviceID());
 
-		rTalonSlave = new CANTalon(RobotMap.rightMotorController2);
-		rTalonSlave.changeControlMode(CANTalon.ControlMode.Follower);
-		rTalonSlave.set(rTalonMaster.getDeviceID());
+		rTalonSlave1 = new CANTalon(RobotMap.rightMotorController2);
+		rTalonSlave1.changeControlMode(CANTalon.TalonControlMode.Follower);
+		rTalonSlave1.set(rTalonMaster.getDeviceID());
+
+		lTalonSlave2 = new CANTalon(RobotMap.leftMotorController3);
+		lTalonSlave2.changeControlMode(CANTalon.TalonControlMode.Follower);
+		lTalonSlave2.set(lTalonMaster.getDeviceID());
+
+		rTalonSlave2 = new CANTalon(RobotMap.rightMotorController3);
+		rTalonSlave2.changeControlMode(CANTalon.TalonControlMode.Follower);
+		rTalonSlave2.set(rTalonMaster.getDeviceID());
 
 	}
 	
 	public void move (double left, double right){
-		left = left * MAX_SPEED;
-		right = right * MAX_SPEED;
-		
+		SmartDashboard.putNumber("Left Input: ", left);
+		SmartDashboard.putNumber("Right Input: ", right);
+				
 		lTalonMaster.set(left);
 		rTalonMaster.set(right);
 
@@ -53,10 +50,19 @@ public class Drive extends Subsystem {
 	}
 	
 	private void updateSmartDashboard() {
-		SmartDashboard.putNumber("Left Encoder: ", lTalonMaster.getPosition());
-		SmartDashboard.putNumber("Right Encoder: ", rTalonMaster.getPosition());
-		SmartDashboard.putNumber("Left Encoder Velocity: ", lTalonMaster.getSpeed());
-		SmartDashboard.putNumber("Right Encoder Velocity: ", rTalonMaster.getSpeed());
+		SmartDashboard.putNumber("Left Master Voltage: ", lTalonMaster.getOutputVoltage());
+		SmartDashboard.putNumber("Left Master Current: ", lTalonMaster.getOutputCurrent());
+		SmartDashboard.putNumber("Left Slave 1 Voltage: ", lTalonSlave1.getOutputVoltage());
+		SmartDashboard.putNumber("Left Slave 1 Current: ", lTalonSlave1.getOutputCurrent());
+		SmartDashboard.putNumber("Left Slave 2 Voltage: ", lTalonSlave2.getOutputVoltage());
+		SmartDashboard.putNumber("Left Slave 2 Current: ", lTalonSlave2.getOutputCurrent());
+
+		SmartDashboard.putNumber("Right Master Voltage: ", rTalonMaster.getOutputVoltage());
+		SmartDashboard.putNumber("Right Master Current: ", rTalonMaster.getOutputCurrent());
+		SmartDashboard.putNumber("Right Slave 1 Voltage: ", rTalonSlave1.getOutputVoltage());
+		SmartDashboard.putNumber("Right Slave 1 Current: ", rTalonSlave1.getOutputCurrent());
+		SmartDashboard.putNumber("Right Slave 2 Voltage: ", rTalonSlave2.getOutputVoltage());
+		SmartDashboard.putNumber("Right Slave 2 Current: ", rTalonSlave2.getOutputCurrent());
 	}
 	
 	public void initDefaultCommand() {
