@@ -7,13 +7,13 @@ package org.usfirst.frc.team88.robot;
  */
 public class RobotMap {
 
-	public static int leftMotorController1=4;
-	public static int leftMotorController2=3;
-	public static int leftMotorController3=0;
+	public static int leftMotorController1=1;
+	public static int leftMotorController2=2;
+	public static int leftMotorController3=3;
 
-	public static int rightMotorController1=7;
-	public static int rightMotorController2=2;
-	public static int rightMotorController3=0;
+	public static int rightMotorController1=4;
+	public static int rightMotorController2=5;
+	public static int rightMotorController3=6;
 
 	
 	// For example to map the left and right motors, you could define the
