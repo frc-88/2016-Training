@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Drive extends Subsystem {
-	private final CANTalon lTalonMaster, lTalonSlave1, lTalonSlave2, rTalonMaster, rTalonSlave1, rTalonSlave2;
+	private final CANTalon lTalonMaster, lTalonSlave1, lTalonSlave2, rTalonMaster, rTalonSlave1, rTalonSlave2 ;
 
 	public Drive() {
 		lTalonMaster = new CANTalon(RobotMap.leftMotorController1);
-		lTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+	//	lTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
 		rTalonMaster = new CANTalon(RobotMap.rightMotorController1);
-		rTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
+	//	rTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
 		// set up drive slaves
 		lTalonSlave1 = new CANTalon(RobotMap.leftMotorController2);
@@ -29,6 +29,7 @@ public class Drive extends Subsystem {
 		rTalonSlave1.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rTalonSlave1.set(rTalonMaster.getDeviceID());
 
+		
 		lTalonSlave2 = new CANTalon(RobotMap.leftMotorController3);
 		lTalonSlave2.changeControlMode(CANTalon.TalonControlMode.Follower);
 		lTalonSlave2.set(lTalonMaster.getDeviceID());
@@ -36,6 +37,7 @@ public class Drive extends Subsystem {
 		rTalonSlave2 = new CANTalon(RobotMap.rightMotorController3);
 		rTalonSlave2.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rTalonSlave2.set(rTalonMaster.getDeviceID());
+		
 
 	}
 	
@@ -44,8 +46,8 @@ public class Drive extends Subsystem {
 		SmartDashboard.putNumber("Right Input: ", right);
 				
 		lTalonMaster.set(left);
-		rTalonMaster.set(right);
-
+		rTalonMaster.set(-right);
+		
 		updateSmartDashboard();
 	}
 	

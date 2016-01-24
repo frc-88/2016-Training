@@ -14,6 +14,8 @@ public class RobotMap {
 	public static int rightMotorController1=4;
 	public static int rightMotorController2=5;
 	public static int rightMotorController3=6;
+	
+	public static int irSensor = 0;
 
 	
 	// For example to map the left and right motors, you could define the

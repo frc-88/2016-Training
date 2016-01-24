@@ -1,11 +1,13 @@
 
 package org.usfirst.frc.team88.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team88.robot.subsystems.DistanceTracking;
 import org.usfirst.frc.team88.robot.subsystems.Drive;
 
 /**
@@ -18,15 +20,24 @@ import org.usfirst.frc.team88.robot.subsystems.Drive;
 public class Robot extends IterativeRobot {
 
 	public static Drive drive;
+	public static DistanceTracking distanceTracking;
 	public static OI oi;
-
+	public static CameraServer server;
+	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
 		drive = new Drive();
+		distanceTracking = new DistanceTracking();
 		oi = new OI();
+		
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture("cam0");
+
     }
 	
 	public void disabledPeriodic() {
