@@ -22,5 +22,7 @@ public class RobotMap {
 	public static int hookDeliverySystemHDSMotor = 777;
 	
 	public static int shooterMotor = 555;
+	
+	public static int elevatorMotor = 444;
 
 }
