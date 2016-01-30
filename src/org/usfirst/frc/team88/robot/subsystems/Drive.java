@@ -15,9 +15,13 @@ public class Drive extends Subsystem {
 
 	public Drive() {
 		lTalonMaster = new CANTalon(RobotMap.leftMotorController1);
+		lTalonMaster.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+
 	//	lTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
 		rTalonMaster = new CANTalon(RobotMap.rightMotorController1);
+		rTalonMaster.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+
 	//	rTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
 		// set up drive slaves
@@ -52,6 +56,11 @@ public class Drive extends Subsystem {
 	}
 	
 	private void updateSmartDashboard() {
+		SmartDashboard.putNumber("Left Encoder: ", lTalonMaster.getEncPosition());
+		SmartDashboard.putNumber("Left Encoder Quad A: ", lTalonMaster.getPinStateQuadA());
+		SmartDashboard.putNumber("Left Encoder Quad B: ", lTalonMaster.getPinStateQuadB());
+		SmartDashboard.putNumber("Left Encoder Quad Idx: ", lTalonMaster.getPinStateQuadIdx());
+		
 		SmartDashboard.putNumber("Left Master Voltage: ", lTalonMaster.getOutputVoltage());
 		SmartDashboard.putNumber("Left Master Current: ", lTalonMaster.getOutputCurrent());
 		SmartDashboard.putNumber("Left Slave 1 Voltage: ", lTalonSlave1.getOutputVoltage());
@@ -59,6 +68,7 @@ public class Drive extends Subsystem {
 		SmartDashboard.putNumber("Left Slave 2 Voltage: ", lTalonSlave2.getOutputVoltage());
 		SmartDashboard.putNumber("Left Slave 2 Current: ", lTalonSlave2.getOutputCurrent());
 
+		SmartDashboard.putNumber("Right Encoder: ", rTalonMaster.getEncPosition());
 		SmartDashboard.putNumber("Right Master Voltage: ", rTalonMaster.getOutputVoltage());
 		SmartDashboard.putNumber("Right Master Current: ", rTalonMaster.getOutputCurrent());
 		SmartDashboard.putNumber("Right Slave 1 Voltage: ", rTalonSlave1.getOutputVoltage());
