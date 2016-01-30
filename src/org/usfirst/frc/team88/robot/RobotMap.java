@@ -17,5 +17,8 @@ public class RobotMap {
 	
 	public static int intakeMotor = 999;
 	public static int intakeSensor = 0;
+	
+	public static int hookDeliverySystemAngleMotor = 888;
+	public static int hookDeliverySystemHDSMotor = 777;
 
 }
