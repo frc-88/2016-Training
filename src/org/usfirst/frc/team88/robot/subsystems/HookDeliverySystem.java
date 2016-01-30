@@ -26,6 +26,8 @@ public class HookDeliverySystem extends Subsystem {
     	
     	SmartDashboard.putNumber("Angle Voltage: ", angleTalon.getOutputVoltage());
     	SmartDashboard.putNumber("Angle Current: ", angleTalon.getOutputCurrent());
+    	SmartDashboard.putNumber("Angle Encoder Position: ", angleTalon.getEncPosition());
+    	SmartDashboard.putNumber("Angle Encoder Velocity: ", angleTalon.getEncVelocity());
     }
     
     public void moveHDS(double voltage){
@@ -33,6 +35,8 @@ public class HookDeliverySystem extends Subsystem {
     	
     	SmartDashboard.putNumber("HDS Voltage: ", HDSTalon.getOutputVoltage());
     	SmartDashboard.putNumber("HDS Current: ", HDSTalon.getOutputCurrent());
+    	SmartDashboard.putNumber("HDS Encoder Position: ", HDSTalon.getEncPosition());
+    	SmartDashboard.putNumber("HDS Encoder Velocity: ", HDSTalon.getEncVelocity());
     }
 
     public void initDefaultCommand() {
