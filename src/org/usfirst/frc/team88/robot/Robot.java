@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team88.robot.subsystems.Drive;
 import org.usfirst.frc.team88.robot.subsystems.HookDeliverySystem;
 import org.usfirst.frc.team88.robot.subsystems.Intake;
+import org.usfirst.frc.team88.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +26,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static CameraServer server;
 	public static HookDeliverySystem hookDeliverySystem;
+	public static Shooter shooter;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -35,6 +37,7 @@ public class Robot extends IterativeRobot {
 		intake = new Intake();
 		oi = new OI();
 		hookDeliverySystem = new HookDeliverySystem();
+		shooter = new Shooter();
 		
         server = CameraServer.getInstance();
         server.setQuality(50);

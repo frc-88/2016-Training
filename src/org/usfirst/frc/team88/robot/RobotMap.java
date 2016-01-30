@@ -20,5 +20,7 @@ public class RobotMap {
 	
 	public static int hookDeliverySystemAngleMotor = 888;
 	public static int hookDeliverySystemHDSMotor = 777;
+	
+	public static int shooterMotor = 555;
 
 }

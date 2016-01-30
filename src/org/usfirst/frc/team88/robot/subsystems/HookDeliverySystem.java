@@ -13,8 +13,6 @@ public class HookDeliverySystem extends Subsystem {
 	
     private final CANTalon angleTalon;
     private final CANTalon HDSTalon;
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
     
     public HookDeliverySystem() {
     	angleTalon = new CANTalon(RobotMap.hookDeliverySystemAngleMotor);
