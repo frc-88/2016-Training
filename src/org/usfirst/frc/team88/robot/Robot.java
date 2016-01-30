@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team88.robot.subsystems.DistanceTracking;
 import org.usfirst.frc.team88.robot.subsystems.Drive;
+import org.usfirst.frc.team88.robot.subsystems.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,7 +20,7 @@ import org.usfirst.frc.team88.robot.subsystems.Drive;
 public class Robot extends IterativeRobot {
 
 	public static Drive drive;
-	public static DistanceTracking distanceTracking;
+	public static Intake intake;
 	public static OI oi;
 	public static CameraServer server;
 	
@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		drive = new Drive();
-		distanceTracking = new DistanceTracking();
+		intake = new Intake();
 		oi = new OI();
 		
         server = CameraServer.getInstance();
