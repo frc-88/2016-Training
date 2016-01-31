@@ -1,6 +1,7 @@
 package org.usfirst.frc.team88.robot.subsystems;
 
 import org.usfirst.frc.team88.robot.RobotMap;
+import org.usfirst.frc.team88.robot.commands.HookDeliverySystemWithController;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -40,6 +41,7 @@ public class HookDeliverySystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new HookDeliverySystemWithController());
     }
 }
 

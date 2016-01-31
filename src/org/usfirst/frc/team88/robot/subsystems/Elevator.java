@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team88.robot.RobotMap;
+import org.usfirst.frc.team88.robot.commands.ElevatorWithController;
 
 import edu.wpi.first.wpilibj.CANTalon;
 
@@ -26,8 +27,7 @@ public class Elevator extends Subsystem {
 	}
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new ElevatorWithController());
     }
 }
 

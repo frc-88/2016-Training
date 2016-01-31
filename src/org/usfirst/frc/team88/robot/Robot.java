@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team88.robot.subsystems.Drive;
+import org.usfirst.frc.team88.robot.subsystems.Elevator;
 import org.usfirst.frc.team88.robot.subsystems.HookDeliverySystem;
 import org.usfirst.frc.team88.robot.subsystems.Intake;
 import org.usfirst.frc.team88.robot.subsystems.Shooter;
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static CameraServer server;
 	public static HookDeliverySystem hookDeliverySystem;
 	public static Shooter shooter;
+	public static Elevator elevator;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -38,6 +40,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		hookDeliverySystem = new HookDeliverySystem();
 		shooter = new Shooter();
+		elevator = new Elevator();
 		
         server = CameraServer.getInstance();
         server.setQuality(50);
