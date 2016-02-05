@@ -7,10 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class shooterWithController extends Command {
+public class MoveArmsWithController extends Command {
 
-    public shooterWithController() {
-    	requires(Robot.shooter);
+    public MoveArmsWithController() {
+         requires (Robot.intake);
+         
     }
 
     // Called just before this Command runs the first time
@@ -19,11 +20,10 @@ public class shooterWithController extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = Robot.oi.getOperatorRightZAxis();
+    	double speed = Robot.oi.getOperatorRightVerticalAxis();
     	
     	speed = Robot.oi.applyDeadZone(speed);
-    	
-    	Robot.shooter.fire(speed);
+    	Robot.intake.moveArms(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -9,19 +9,18 @@ public class RobotMap {
 
 	public static int leftMotorController1=1;
 	public static int leftMotorController2=2;
-	public static int leftMotorController3=3;
 
 	public static int rightMotorController1=4;
 	public static int rightMotorController2=5;
-	public static int rightMotorController3=6;
 	
-	public static int intakeMotor = 999;
+	public static int intakeArmMotor = 6;
+	public static int intakeMotor = 7;
 	public static int intakeSensor = 0;
 	
 	public static int hookDeliverySystemAngleMotor = 888;
 	public static int hookDeliverySystemHDSMotor = 777;
 	
-	public static int shooterMotor = 555;
+	public static int shooterMotor = 8;
 	
 	public static int elevatorMotor = 444;
 

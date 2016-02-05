@@ -19,7 +19,7 @@ public class OI {
     private static final double DEADZONE = 0.1;
 
     //driver controller setup
-    private Joystick driverController = new Joystick(0);
+    private Joystick driverController = new Joystick(0);    
     private Button driverButtonA = new JoystickButton(driverController, 1);
     private Button driverButtonB = new JoystickButton(driverController, 2);
     private Button driverButtonX = new JoystickButton(driverController, 3);
