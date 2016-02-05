@@ -36,12 +36,13 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		drive = new Drive();
-		intake = new Intake();
+		//intake = new Intake();
+		//hookDeliverySystem = new HookDeliverySystem();
+		//shooter = new Shooter();
+		//elevator = new Elevator();
+
 		oi = new OI();
-		hookDeliverySystem = new HookDeliverySystem();
-		shooter = new Shooter();
-		elevator = new Elevator();
-		
+
         server = CameraServer.getInstance();
         server.setQuality(50);
         //the camera name (ex "cam0") can be found through the roborio web interface

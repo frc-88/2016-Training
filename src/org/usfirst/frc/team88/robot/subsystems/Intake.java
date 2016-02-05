@@ -13,12 +13,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Intake extends Subsystem {
     
-	private final CANTalon armTalon;
+	private final CANTalon armTalon1;
+	private final CANTalon armTalon2;
 	private final CANTalon intakeTalon;
 	private final AnalogInput intakeSensor;
 
 	public Intake() {
-		armTalon = new CANTalon (RobotMap.intakeArmMotor);
+		armTalon1 = new CANTalon(RobotMap.intakeArmMotor1);
+		
+		armTalon2 = new CANTalon(RobotMap.intakeArmMotor2);
+		armTalon2.changeControlMode(CANTalon.TalonControlMode.Follower);
+		armTalon2.set(armTalon1.getDeviceID());
+
 		intakeTalon = new CANTalon(RobotMap.intakeMotor);
 		intakeSensor = new AnalogInput(RobotMap.intakeSensor);
 	}
@@ -28,13 +34,14 @@ public class Intake extends Subsystem {
 		
 		SmartDashboard.putNumber("Intake Voltage: ", intakeTalon.getOutputVoltage());
 		SmartDashboard.putNumber("Intake Current: ", intakeTalon.getOutputCurrent());
+		//SmartDashboard.putNumber("Intake ", value);
 	}
 	
 	public void moveArms (double voltage){
-		armTalon.set(voltage);
+		armTalon1.set(voltage);
 		
-		SmartDashboard.putNumber("Arm Voltage: ", armTalon.getOutputVoltage());
-		SmartDashboard.putNumber("Arm Current: ", armTalon.getOutputCurrent());
+		SmartDashboard.putNumber("Arm Voltage: ", armTalon1.getOutputVoltage());
+		SmartDashboard.putNumber("Arm Current: ", armTalon1.getOutputCurrent());
 	}
 	
 	public double getDistance() {

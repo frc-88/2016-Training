@@ -24,8 +24,8 @@ public class DriveWithControllerOpen extends Command {
 
         left = Robot.oi.applyDeadZone(left);
 		right = Robot.oi.applyDeadZone(right);
-
-		Robot.drive.move(left,right);
+ 
+		Robot.drive.move(left * 0.7 ,right * 0.7);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

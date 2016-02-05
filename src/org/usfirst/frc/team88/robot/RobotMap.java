@@ -13,7 +13,8 @@ public class RobotMap {
 	public static int rightMotorController1=4;
 	public static int rightMotorController2=5;
 	
-	public static int intakeArmMotor = 7;
+	public static int intakeArmMotor1 = 7;
+	public static int intakeArmMotor2 = 3;
 	public static int intakeMotor = 6;
 	public static int intakeSensor = 0;
 	

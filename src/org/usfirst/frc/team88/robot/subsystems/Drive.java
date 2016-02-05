@@ -17,9 +17,11 @@ public class Drive extends Subsystem {
 		// set up drive masters
 		lTalonMaster = new CANTalon(RobotMap.leftMotorController1);
 		lTalonMaster.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		lTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
 		rTalonMaster = new CANTalon(RobotMap.rightMotorController1);
 		rTalonMaster.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		rTalonMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
 		// set up drive slaves
 		lTalonSlave1 = new CANTalon(RobotMap.leftMotorController2);
