@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class shooterWithController extends Command {
+public class ShooterWithController extends Command {
 
-    public shooterWithController() {
+    public ShooterWithController() {
     	requires(Robot.shooter);
     }
 

@@ -1,7 +1,7 @@
 package org.usfirst.frc.team88.robot.subsystems;
 
 import org.usfirst.frc.team88.robot.RobotMap;
-import org.usfirst.frc.team88.robot.commands.shooterWithController;
+import org.usfirst.frc.team88.robot.commands.ShooterWithController;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -28,7 +28,7 @@ public class Shooter extends Subsystem {
 		SmartDashboard.putNumber("Shooter Encoder Velocity: ", shooterTalon.getEncVelocity());
 	}
     public void initDefaultCommand() {
-    	setDefaultCommand(new shooterWithController());
+    	setDefaultCommand(new ShooterWithController());
     }
 }
 
