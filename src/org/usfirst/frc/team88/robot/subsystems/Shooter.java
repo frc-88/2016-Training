@@ -16,6 +16,7 @@ public class Shooter extends Subsystem {
 
 	public Shooter(){
 		shooterTalon = new CANTalon(RobotMap.shooterMotor);
+		shooterTalon.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 	}
 	
 	public void fire(double voltage){
@@ -27,8 +28,6 @@ public class Shooter extends Subsystem {
 		SmartDashboard.putNumber("Shooter Encoder Velocity: ", shooterTalon.getEncVelocity());
 	}
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new shooterWithController());
     }
 }

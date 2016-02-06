@@ -3,10 +3,10 @@ package org.usfirst.frc.team88.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team88.robot.subsystems.Arms;
 import org.usfirst.frc.team88.robot.subsystems.Drive;
 import org.usfirst.frc.team88.robot.subsystems.Elevator;
 import org.usfirst.frc.team88.robot.subsystems.HookDeliverySystem;
@@ -24,11 +24,12 @@ public class Robot extends IterativeRobot {
 
 	public static Drive drive;
 	public static Intake intake;
-	public static OI oi;
-	public static CameraServer server;
-	public static HookDeliverySystem hookDeliverySystem;
+	public static Arms arms;
 	public static Shooter shooter;
+//	public static CameraServer server;
+	public static HookDeliverySystem hookDeliverySystem;
 	public static Elevator elevator;
+	public static OI oi;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -36,17 +37,18 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		drive = new Drive();
-		//intake = new Intake();
-		//hookDeliverySystem = new HookDeliverySystem();
-		//shooter = new Shooter();
-		//elevator = new Elevator();
+		intake = new Intake();
+		arms = new Arms();
+		shooter = new Shooter();
+//		hookDeliverySystem = new HookDeliverySystem();
+//		elevator = new Elevator();
 
 		oi = new OI();
 
-        server = CameraServer.getInstance();
-        server.setQuality(50);
-        //the camera name (ex "cam0") can be found through the roborio web interface
-        server.startAutomaticCapture("cam0");
+//        server = CameraServer.getInstance();
+//        server.setQuality(50);
+//        //the camera name (ex "cam0") can be found through the roborio web interface
+//        server.startAutomaticCapture("cam0");
 
     }
 	

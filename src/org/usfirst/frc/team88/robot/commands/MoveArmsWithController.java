@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class MoveArmsWithController extends Command {
 
     public MoveArmsWithController() {
-         requires (Robot.intake);
+         requires (Robot.arms);
          
     }
 
@@ -23,7 +23,7 @@ public class MoveArmsWithController extends Command {
     	double speed = Robot.oi.getOperatorRightVerticalAxis();
     	
     	speed = Robot.oi.applyDeadZone(speed);
-    	Robot.intake.moveArms(speed);
+    	Robot.arms.moveArms(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
