@@ -106,7 +106,11 @@ public class OI {
     public double applyDeadZone(double value) {
     	if (Math.abs(value) < DEADZONE) {
     		return 0.0;
-    	}
+    	} else if (value > 0) {
+               value = (value - DEADZONE) / (1 - DEADZONE);
+       } else {
+               value = (value + DEADZONE) / (1 - DEADZONE);
+       }
 
     	return value;
     }
