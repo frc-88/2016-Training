@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team88.robot.subsystems.Arms;
 import org.usfirst.frc.team88.robot.subsystems.Drive;
-import org.usfirst.frc.team88.robot.subsystems.Elevator;
+import org.usfirst.frc.team88.robot.subsystems.Climber;
 import org.usfirst.frc.team88.robot.subsystems.HookDeliverySystem;
 import org.usfirst.frc.team88.robot.subsystems.Intake;
 import org.usfirst.frc.team88.robot.subsystems.Shooter;
@@ -28,7 +28,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter;
 //	public static CameraServer server;
 	public static HookDeliverySystem hookDeliverySystem;
-	public static Elevator elevator;
+	public static Climber climber;
 	public static OI oi;
 	
     /**

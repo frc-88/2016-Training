@@ -12,25 +12,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Arms extends Subsystem {
     
-	private final CANTalon armTalon1;
-	private final CANTalon armTalon2;
+	private final CANTalon armTalon;
 
 	public Arms() {
-		armTalon1 = new CANTalon(RobotMap.intakeArmMotor1);
-		armTalon1.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
-
-		armTalon2 = new CANTalon(RobotMap.intakeArmMotor2);
-		armTalon2.changeControlMode(CANTalon.TalonControlMode.Follower);
-		armTalon2.set(armTalon1.getDeviceID());
+		armTalon = new CANTalon(RobotMap.armMotorController);
+		armTalon.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 	}
 
 	public void moveArms (double voltage){
-		armTalon1.set(voltage);
+		armTalon.set(voltage);
 		
-		SmartDashboard.putNumber("Arm Master Voltage: ", armTalon1.getOutputVoltage());
-		SmartDashboard.putNumber("Arm Master Current: ", armTalon1.getOutputCurrent());
-		SmartDashboard.putNumber("Arm Slave Voltage: ", armTalon2.getOutputVoltage());
-		SmartDashboard.putNumber("Arm Slave Current: ", armTalon2.getOutputCurrent());
+		SmartDashboard.putNumber("Arm Master Voltage: ", armTalon.getOutputVoltage());
+		SmartDashboard.putNumber("Arm Master Current: ", armTalon.getOutputCurrent());
 	}
 	
 	

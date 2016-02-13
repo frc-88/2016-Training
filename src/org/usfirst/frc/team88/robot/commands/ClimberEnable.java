@@ -7,28 +7,24 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoveArmsWithController extends Command {
+public class ClimberEnable extends Command {
 
-    public MoveArmsWithController() {
-         requires (Robot.arms);
-         
+    public ClimberEnable() {
+    	requires(Robot.climber);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.climber.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = Robot.oi.getOperatorLeftVerticalAxis();
-    	
-    	speed = Robot.oi.applyDeadZone(speed);
-    	Robot.arms.moveArms(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
