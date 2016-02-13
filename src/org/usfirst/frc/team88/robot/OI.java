@@ -7,6 +7,7 @@ import org.usfirst.frc.team88.robot.commands.ClimberFire;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -114,6 +115,14 @@ public class OI {
    
     public double getOperatorZAxis() {
         return operatorController.getRawAxis(LEFT_Z_AXIS) - operatorController.getRawAxis(RIGHT_Z_AXIS);
+    }
+    
+    public void vibrateDriver(RumbleType type, float value){
+    	driverController.setRumble(type, value);
+    }
+    
+    public void vibrateOperator(RumbleType type, float value){
+    	operatorController.setRumble(type, value);
     }
    
     //// TRIGGERING COMMANDS WITH BUTTONS
