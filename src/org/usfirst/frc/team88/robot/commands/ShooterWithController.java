@@ -19,7 +19,7 @@ public class ShooterWithController extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = Robot.oi.getOperatorRightZAxis();
+    	double speed = Robot.oi.getDriverZAxis();
     	
     	speed = Robot.oi.applyDeadZone(speed);
     	
