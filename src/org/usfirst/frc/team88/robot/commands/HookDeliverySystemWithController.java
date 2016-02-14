@@ -19,7 +19,7 @@ public class HookDeliverySystemWithController extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double angleSpeed = Robot.oi.getOperatorRightVerticalAxis();
+    	double angleSpeed = Robot.oi.getOperatorRightHorizontalAxis();
     	double HDSSpeed = Robot.oi.getOperatorZAxis();
     	
     	angleSpeed = Robot.oi.applyDeadZone(angleSpeed);

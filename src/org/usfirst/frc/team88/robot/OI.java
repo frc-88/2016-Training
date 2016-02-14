@@ -101,6 +101,10 @@ public class OI {
         return driverController.getRawAxis(LEFT_Z_AXIS) - driverController.getRawAxis(RIGHT_Z_AXIS);
     }
 
+    public void vibrateDriver(RumbleType type, float value){
+    	driverController.setRumble(type, value);
+    }
+    
     public void setDriverRumble(float rumble) {
    	   driverController.setRumble(RumbleType.kLeftRumble, rumble);
    	   driverController.setRumble(RumbleType.kRightRumble, rumble);
@@ -133,10 +137,6 @@ public class OI {
    
     public double getOperatorZAxis() {
         return operatorController.getRawAxis(LEFT_Z_AXIS) - operatorController.getRawAxis(RIGHT_Z_AXIS);
-    }
-    
-    public void vibrateDriver(RumbleType type, float value){
-    	driverController.setRumble(type, value);
     }
     
     public void vibrateOperator(RumbleType type, float value){
