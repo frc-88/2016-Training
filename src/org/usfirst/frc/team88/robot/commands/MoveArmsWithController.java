@@ -20,7 +20,7 @@ public class MoveArmsWithController extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = Robot.oi.getOperatorRightVerticalAxis();
+    	double speed = Robot.oi.getOperatorLeftVerticalAxis();
     	
     	speed = Robot.oi.applyDeadZone(speed);
     	Robot.arms.moveArms(speed);

@@ -1,8 +1,13 @@
 package org.usfirst.frc.team88.robot;
 
+import org.usfirst.frc.team88.robot.commands.ClimberDisable;
+import org.usfirst.frc.team88.robot.commands.ClimberEnable;
+import org.usfirst.frc.team88.robot.commands.ClimberFire;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.Joystick.RumbleType;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -26,6 +31,12 @@ public class OI {
     private Button driverButtonY = new JoystickButton(driverController, 4);
     private Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
     private Button driverButtonRightBumper = new JoystickButton(driverController, 6);
+    private Button driverButtonBack = new JoystickButton(driverController, 7);
+    private Button driverButtonStart = new JoystickButton(driverController, 8);
+    private Button driverButtonLeftAxisPress = new JoystickButton(driverController, 9);
+    private Button driverButtonRightAxisPress = new JoystickButton(driverController, 10);
+
+
     
     //operator controller setup
     private Joystick operatorController = new Joystick(1);
@@ -35,7 +46,19 @@ public class OI {
     private Button operatorButtonY = new JoystickButton(operatorController, 4);
     private Button operatorButtonLeftBumper = new JoystickButton(operatorController, 5);
     private Button operatorButtonRightBumper = new JoystickButton(operatorController, 6);
+    private Button operatorButtonBack = new JoystickButton(operatorController, 7);
+    private Button operatorButtonStart = new JoystickButton(operatorController, 8);
+    private Button operatorButtonLeftAxisPress = new JoystickButton(operatorController, 9);
+    private Button operatorButtonRightAxisPress = new JoystickButton(operatorController, 10);
     
+    
+    public OI () {
+        driverButtonStart.whenPressed(new ClimberEnable());
+        driverButtonStart.whenReleased(new ClimberDisable());
+
+        operatorButtonLeftBumper.whenPressed(new ClimberFire());
+    }
+     
     // driver joysticks
     public double getDriverRightVerticalAxis() {
         return driverController.getRawAxis(RIGHT_VERT_AXIS);
@@ -61,6 +84,10 @@ public class OI {
         return driverController.getRawAxis(RIGHT_Z_AXIS);
     }
     
+    public double getDriverZAxis() {
+        return driverController.getRawAxis(LEFT_Z_AXIS) - driverController.getRawAxis(RIGHT_Z_AXIS);
+    }
+   
     // operator joysticks
     public double getOperatorRightVerticalAxis() {
         return operatorController.getRawAxis(RIGHT_VERT_AXIS);
@@ -84,6 +111,18 @@ public class OI {
     
     public double getOperatorRightZAxis() {
         return operatorController.getRawAxis(RIGHT_Z_AXIS);
+    }
+   
+    public double getOperatorZAxis() {
+        return operatorController.getRawAxis(LEFT_Z_AXIS) - operatorController.getRawAxis(RIGHT_Z_AXIS);
+    }
+    
+    public void vibrateDriver(RumbleType type, float value){
+    	driverController.setRumble(type, value);
+    }
+    
+    public void vibrateOperator(RumbleType type, float value){
+    	operatorController.setRumble(type, value);
     }
    
     //// TRIGGERING COMMANDS WITH BUTTONS

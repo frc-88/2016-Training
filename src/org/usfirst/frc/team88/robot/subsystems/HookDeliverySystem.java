@@ -16,11 +16,11 @@ public class HookDeliverySystem extends Subsystem {
     private final CANTalon HDSTalon;
     
     public HookDeliverySystem() {
-    	angleTalon = new CANTalon(RobotMap.hookDeliverySystemAngleMotor);
-    	HDSTalon = new CANTalon(RobotMap.hookDeliverySystemHDSMotor);
+    	angleTalon = new CANTalon(RobotMap.hdsAngleMotorController);
+    	HDSTalon = new CANTalon(RobotMap.hdsElevatorMotorController);
     }
     
-    public void setAngle(double voltage) {
+    public void moveAngle(double voltage) {
     	angleTalon.set(voltage);
     	
     	SmartDashboard.putNumber("Angle Voltage: ", angleTalon.getOutputVoltage());

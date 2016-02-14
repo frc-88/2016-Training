@@ -7,22 +7,41 @@ package org.usfirst.frc.team88.robot;
  */
 public class RobotMap {
 
-	public static int leftMotorController1=1;
-	public static int leftMotorController2=2;
+// Drive
+	// encoders on masters
+	public static int driveLeftMaster=1;
+	public static int driveLeftSlave=2;
 
-	public static int rightMotorController1=4;
-	public static int rightMotorController2=5;
-	
-	public static int intakeArmMotor1 = 7;
-	public static int intakeArmMotor2 = 3;
+	public static int driveRightMaster=4;
+	public static int driveRightSlave=5;
+
+// Intake
 	public static int intakeMotor = 6;
-	public static int intakeSensor = 0;
-	
-	public static int hookDeliverySystemAngleMotor = 888;
-	public static int hookDeliverySystemHDSMotor = 777;
-	
 	public static int shooterMotor = 8;
-	
-	public static int elevatorMotor = 444;
+    // light sensor switch to known when boulder is in the nest
+	public static int nestSensor = 0;
 
+	
+// Arms
+	public static int armMotorController = 7;
+	// encoder to know angle of arms
+
+// HDS - Hook Delivery System
+	public static int hdsElevatorMotorController = 3;
+	public static int hdsAngleMotorController = 9;
+	// switch to determine if hook is on bar, limit switch? 
+	// encoder on angle motor
+	
+// Climber
+    public static final int climberSolenoidIn = 0;
+    public static final int climberSolenoidOut = 1;
+	// some mechanism to release clock springs, solenoid?
+	// or, alternatively, one motor to run winch
+	
+// Camera
+	public static String cameraName = "cam0";
+	
+// Shooter ???
+
+// CatABuster ???	
 }

@@ -20,7 +20,7 @@ public class Intake extends Subsystem {
 		intakeTalon = new CANTalon(RobotMap.intakeMotor);
 		intakeTalon.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
-		intakeSensor = new AnalogInput(RobotMap.intakeSensor);
+		intakeSensor = new AnalogInput(RobotMap.nestSensor);
 	}
 
 	public void go (double voltage) {
