@@ -35,8 +35,6 @@ public class OI {
     private Button driverButtonStart = new JoystickButton(driverController, 8);
     private Button driverButtonLeftAxisPress = new JoystickButton(driverController, 9);
     private Button driverButtonRightAxisPress = new JoystickButton(driverController, 10);
-
-
     
     //operator controller setup
     private Joystick operatorController = new Joystick(1);
@@ -51,6 +49,21 @@ public class OI {
     private Button operatorButtonLeftAxisPress = new JoystickButton(operatorController, 9);
     private Button operatorButtonRightAxisPress = new JoystickButton(operatorController, 10);
     
+    //// TRIGGERING COMMANDS WITH BUTTONS
+    // Once you have a button, it's trivial to bind it to a button in one of
+    // three ways:
+    
+    // Start the command when the button is pressed and let it run the command
+    // until it is finished as determined by it's isFinished method.
+    // button.whenPressed(new ExampleCommand());
+    
+    // Run the command while the button is being held down and interrupt it once
+    // the button is released.
+    // button.whileHeld(new ExampleCommand());
+    
+    // Start the command when the button is released  and let it run the command
+    // until it is finished as determined by it's isFinished method.
+    // button.whenReleased(new ExampleCommand());    
     
     public OI () {
         driverButtonStart.whenPressed(new ClimberEnable());
@@ -59,7 +72,7 @@ public class OI {
         operatorButtonLeftBumper.whenPressed(new ClimberFire());
     }
      
-    // driver joysticks
+    // driver
     public double getDriverRightVerticalAxis() {
         return driverController.getRawAxis(RIGHT_VERT_AXIS);
     }
@@ -87,8 +100,17 @@ public class OI {
     public double getDriverZAxis() {
         return driverController.getRawAxis(LEFT_Z_AXIS) - driverController.getRawAxis(RIGHT_Z_AXIS);
     }
-   
-    // operator joysticks
+
+    public void vibrateDriver(RumbleType type, float value){
+    	driverController.setRumble(type, value);
+    }
+    
+    public void setDriverRumble(float rumble) {
+   	   driverController.setRumble(RumbleType.kLeftRumble, rumble);
+   	   driverController.setRumble(RumbleType.kRightRumble, rumble);
+    }
+ 
+    // operator
     public double getOperatorRightVerticalAxis() {
         return operatorController.getRawAxis(RIGHT_VERT_AXIS);
     }
@@ -117,35 +139,24 @@ public class OI {
         return operatorController.getRawAxis(LEFT_Z_AXIS) - operatorController.getRawAxis(RIGHT_Z_AXIS);
     }
     
-    public void vibrateDriver(RumbleType type, float value){
-    	driverController.setRumble(type, value);
-    }
-    
     public void vibrateOperator(RumbleType type, float value){
     	operatorController.setRumble(type, value);
     }
    
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-    
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());    
-    
+    public void setOperatorRumble(float rumble) {
+    	   operatorController.setRumble(RumbleType.kLeftRumble, rumble);
+    	   operatorController.setRumble(RumbleType.kRightRumble, rumble);
+     }
+  
     // Utilities
     public double applyDeadZone(double value) {
     	if (Math.abs(value) < DEADZONE) {
     		return 0.0;
-    	}
+    	} else if (value > 0) {
+               value = (value - DEADZONE) / (1 - DEADZONE);
+       } else {
+               value = (value + DEADZONE) / (1 - DEADZONE);
+       }
 
     	return value;
     }
