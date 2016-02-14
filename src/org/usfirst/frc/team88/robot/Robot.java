@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team88.robot.subsystems.Arms;
-import org.usfirst.frc.team88.robot.subsystems.Drive;
 import org.usfirst.frc.team88.robot.subsystems.Climber;
+import org.usfirst.frc.team88.robot.subsystems.Drive;
 import org.usfirst.frc.team88.robot.subsystems.HookDeliverySystem;
 import org.usfirst.frc.team88.robot.subsystems.Intake;
 import org.usfirst.frc.team88.robot.subsystems.Shooter;
@@ -22,27 +22,28 @@ import org.usfirst.frc.team88.robot.subsystems.Shooter;
  */
 public class Robot extends IterativeRobot {
 
-	public static Drive drive;
-	public static Intake intake;
 	public static Arms arms;
-	public static Shooter shooter;
-//	public static CameraServer server;
-	public static HookDeliverySystem hookDeliverySystem;
 	public static Climber climber;
+	public static Drive drive;
+	public static HookDeliverySystem hookDeliverySystem;
+	public static Intake intake;
+	public static Shooter shooter;
 	public static OI oi;
+//	public static CameraServer server;
 	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		drive = new Drive();
-		intake = new Intake();
 		arms = new Arms();
+		climber = new Climber();
+		drive = new Drive();
+		hookDeliverySystem = new HookDeliverySystem();
+		intake = new Intake();
 		shooter = new Shooter();
-//		hookDeliverySystem = new HookDeliverySystem();
-//		elevator = new Elevator();
 
+		// OI should always be last so it can refer to the other subsystems
 		oi = new OI();
 
 //        server = CameraServer.getInstance();
