@@ -3,6 +3,7 @@ package org.usfirst.frc.team88.robot;
 import org.usfirst.frc.team88.robot.commands.ClimberDisable;
 import org.usfirst.frc.team88.robot.commands.ClimberEnable;
 import org.usfirst.frc.team88.robot.commands.ClimberFire;
+import org.usfirst.frc.team88.robot.commands.ClimberUnfire;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -21,7 +22,7 @@ public class OI {
     private static final int LEFT_Z_AXIS = 3;
     private static final int RIGHT_Z_AXIS = 2;
 
-    private static final double DEADZONE = 0.1;
+    private static final double DEADZONE = 0.15;
 
     //driver controller setup
     private Joystick driverController = new Joystick(0);    
@@ -70,6 +71,7 @@ public class OI {
         driverButtonStart.whenReleased(new ClimberDisable());
 
         operatorButtonLeftBumper.whenPressed(new ClimberFire());
+        operatorButtonRightBumper.whenPressed(new ClimberUnfire());
     }
      
     // driver

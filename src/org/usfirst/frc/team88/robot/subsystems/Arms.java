@@ -16,6 +16,7 @@ public class Arms extends Subsystem {
 
 	public Arms() {
 		armTalon = new CANTalon(RobotMap.armMotorController);
+		armTalon.enableBrakeMode(true);
 		armTalon.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 	}
 

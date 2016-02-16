@@ -18,6 +18,7 @@ public class Intake extends Subsystem {
 
 	public Intake() {
 		intakeTalon = new CANTalon(RobotMap.intakeMotor);
+		intakeTalon.enableBrakeMode(true);
 		intakeTalon.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
 		intakeSensor = new AnalogInput(RobotMap.nestSensor);

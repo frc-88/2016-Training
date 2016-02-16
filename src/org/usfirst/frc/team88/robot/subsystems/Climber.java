@@ -36,7 +36,11 @@ public class Climber extends Subsystem {
 		}
 	}
 
-    public void initDefaultCommand() {
+	public void unfire(){
+		releaseSolenoid.set(Value.kReverse);
+	}
+
+	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }

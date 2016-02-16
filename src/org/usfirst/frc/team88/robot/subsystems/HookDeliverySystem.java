@@ -17,7 +17,10 @@ public class HookDeliverySystem extends Subsystem {
     
     public HookDeliverySystem() {
     	angleTalon = new CANTalon(RobotMap.hdsAngleMotorController);
+    	angleTalon.enableBrakeMode(true);
+    	
     	HDSTalon = new CANTalon(RobotMap.hdsElevatorMotorController);
+    	HDSTalon.enableBrakeMode(true);
     }
     
     public void moveAngle(double voltage) {
