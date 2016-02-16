@@ -14,14 +14,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Intake extends Subsystem {
     
 	private final CANTalon intakeTalon;
-	private final AnalogInput intakeSensor;
+	private final AnalogInput lowerNestSensor;
+	private final AnalogInput upperNestSensor;
 
 	public Intake() {
 		intakeTalon = new CANTalon(RobotMap.intakeMotor);
 		intakeTalon.enableBrakeMode(true);
 		intakeTalon.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
 
-		intakeSensor = new AnalogInput(RobotMap.nestSensor);
+		lowerNestSensor = new AnalogInput(RobotMap.lowerNestSensor);
+		upperNestSensor = new AnalogInput(RobotMap.upperNestSensor);
 	}
 
 	public void go (double voltage) {
@@ -29,14 +31,30 @@ public class Intake extends Subsystem {
 		
 		SmartDashboard.putNumber("Intake Voltage: ", intakeTalon.getOutputVoltage());
 		SmartDashboard.putNumber("Intake Current: ", intakeTalon.getOutputCurrent());
+		getLowerNestDistance();
+		getUpperNestDistance();
 	}
 	
-	public double getDistance() {
-    	SmartDashboard.putNumber("IR sensor value: ", intakeSensor.getValue());
-    	SmartDashboard.putNumber("IR sensor voltage: ", intakeSensor.getVoltage());
-    	SmartDashboard.putNumber("IR sensor average voltage: ", intakeSensor.getAverageVoltage());
+    private double getLowerNestDistance() {
+    	double distance = ( 4.95 / lowerNestSensor.getVoltage()) - 0.42; 
+
+    	SmartDashboard.putNumber("Lower nest value: ", lowerNestSensor.getValue());
+    	SmartDashboard.putNumber("Lower nest voltage: ", lowerNestSensor.getVoltage());
+    	SmartDashboard.putNumber("Lower nest average voltage: ", lowerNestSensor.getAverageVoltage());
+    	SmartDashboard.putNumber("Lower nest distance: ", distance);
 		
-    	return ( 4.95 / intakeSensor.getAverageVoltage()) - 0.42;
+    	return distance;
+	}
+	
+    private double getUpperNestDistance() {
+    	double distance = ( 4.95 / lowerNestSensor.getVoltage()) - 0.42; 
+
+    	SmartDashboard.putNumber("Upper nest value: ", upperNestSensor.getValue());
+    	SmartDashboard.putNumber("Upper nest voltage: ", upperNestSensor.getVoltage());
+    	SmartDashboard.putNumber("Upper nest average voltage: ", upperNestSensor.getAverageVoltage());
+    	SmartDashboard.putNumber("Upper nest distance: ", distance);
+		
+    	return distance;
 	}
 	
     public void initDefaultCommand() {

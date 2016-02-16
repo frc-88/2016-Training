@@ -24,7 +24,6 @@ public class IntakeWithController extends Command {
         speed = Robot.oi.applyDeadZone(speed);
 
 		Robot.intake.go(speed);
-		Robot.intake.getDistance();
     }
 
     // Make this return true when this Command no longer needs to run execute()
