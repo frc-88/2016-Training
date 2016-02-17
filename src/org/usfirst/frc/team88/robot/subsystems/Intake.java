@@ -1,6 +1,7 @@
 package org.usfirst.frc.team88.robot.subsystems;
 
 import org.usfirst.frc.team88.robot.RobotMap;
+import org.usfirst.frc.team88.robot.commands.IntakeGetDistance;
 import org.usfirst.frc.team88.robot.commands.IntakeWithController;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -34,6 +35,11 @@ public class Intake extends Subsystem {
 		getLowerNestDistance();
 		getUpperNestDistance();
 	}
+
+	public void getDistance() {
+		getLowerNestDistance();
+		getUpperNestDistance();
+	}
 	
     private double getLowerNestDistance() {
     	double distance = ( 4.95 / lowerNestSensor.getVoltage()) - 0.42; 
@@ -47,7 +53,7 @@ public class Intake extends Subsystem {
 	}
 	
     private double getUpperNestDistance() {
-    	double distance = ( 4.95 / lowerNestSensor.getVoltage()) - 0.42; 
+    	double distance = ( 4.95 / upperNestSensor.getVoltage()) - 0.42; 
 
     	SmartDashboard.putNumber("Upper nest value: ", upperNestSensor.getValue());
     	SmartDashboard.putNumber("Upper nest voltage: ", upperNestSensor.getVoltage());

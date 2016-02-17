@@ -45,12 +45,14 @@ public class Drive extends Subsystem {
 	
 	private void updateSmartDashboard() {
 		SmartDashboard.putNumber("Left Encoder: ", lTalonMaster.getEncPosition());
+		SmartDashboard.putNumber("Left Master Speed", lTalonMaster.getSpeed());
 		SmartDashboard.putNumber("Left Master Voltage: ", lTalonMaster.getOutputVoltage());
 		SmartDashboard.putNumber("Left Master Current: ", lTalonMaster.getOutputCurrent());
 		SmartDashboard.putNumber("Left Slave 1 Voltage: ", lTalonSlave1.getOutputVoltage());
 		SmartDashboard.putNumber("Left Slave 1 Current: ", lTalonSlave1.getOutputCurrent());
 
 		SmartDashboard.putNumber("Right Encoder: ", rTalonMaster.getEncPosition());
+		SmartDashboard.putNumber("Right Master Speed", rTalonMaster.getSpeed());
 		SmartDashboard.putNumber("Right Master Voltage: ", rTalonMaster.getOutputVoltage());
 		SmartDashboard.putNumber("Right Master Current: ", rTalonMaster.getOutputCurrent());
 		SmartDashboard.putNumber("Right Slave 1 Voltage: ", rTalonSlave1.getOutputVoltage());
